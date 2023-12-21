@@ -2,11 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend for NASA project",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "test": "jest --detectOpenHandles",
+    "test-watch": "jest --watch",
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js",
+    "cluster": "pm2 start src/server.js -i max"
   },
   "repository": {
     "type": "git",
@@ -14,8 +16,22 @@
   },
   "author": "Victoria",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "nodemon": "^3.0.2"
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "pm2": "^5.3.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
   }
 }
