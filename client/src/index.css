@@ -40,6 +40,7 @@ nav{
   margin: 1em;
   border-radius: 5em;
   height: 80vh;
+  background-color: hsla(0, 0%, 0%, 0.5);
 
 }
 #planetForm{
