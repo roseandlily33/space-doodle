@@ -1,13 +1,60 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Zen+Dots&display=swap');
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: var(--mainFont);
+}
+:root{
+  --yellow: #fcba03;
+  --blue: #03e8fc;
+  --green: #03fc07;
+  --headerFont: 'Zen Dots', sans-serif;
+  --mainFont: 'Space Mono', monospace;
+}
+h1{
+  font-family: var(--headerFont);
+  color: white;
+}
+body{
+  background-color: black;
+  background-image: url('../src/images/guillermo-ferla-Oze6U2m1oYU-unsplash.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#launch{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  border: 2px solid var(--yellow);
+  padding: 2em;
+  margin: 1em;
+  border-radius: 5em;
+  height: 80vh;
+
+}
+#planetForm{
+  display: flex;
+  flex-direction: column;
+  padding-top: 2em;
+  gap: 0.4em;
+}
+label{
+  color: var(--blue);
+}
+button{
+  margin-top: 1em;
+  border: 2px solid var(--green);
+  border-radius: 2em;
+  background-color: var(--green);
+
 }
