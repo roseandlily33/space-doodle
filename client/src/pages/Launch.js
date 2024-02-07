@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 const Launch = props => {
+  console.log('Launch', props);
   const selectorBody = useMemo(() => {
     return props.planets?.map(planet => 
       <option value={planet.keplerName} key={planet.keplerName}>{planet.keplerName}</option>
@@ -34,10 +35,6 @@ const Launch = props => {
           disabled={props.isPendingLaunch}>
           Launch Mission ✔
         </button>
-
-      {props.isPendingLaunch &&
-        <p animate small />
-      }
     </form>
   </div>
 };

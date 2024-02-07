@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 const History = props => {
+  console.log('History', props)
   const tableBody = useMemo(() => {
     return props.launches?.filter((launch) => !launch.upcoming)
       .map((launch) => {

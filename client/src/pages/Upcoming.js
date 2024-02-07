@@ -1,7 +1,5 @@
 import { useMemo } from "react";
 
-import Clickable from "../components/Clickable";
-
 
 const Upcoming = props => {
   const { 
@@ -16,11 +14,9 @@ const Upcoming = props => {
       .map((launch) => {
         return <tr key={String(launch.flightNumber)}>
           <td>
-            <Clickable style={{color:"red"}}>
               <p className={classes.link} onClick={() => abortLaunch(launch.flightNumber)}>
                 ✖
               </p>
-            </Clickable>
           </td>
           <td>{launch.flightNumber}</td>
           <td>{new Date(launch.launchDate).toDateString()}</td>
