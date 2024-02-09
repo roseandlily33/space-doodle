@@ -22,13 +22,6 @@ body{
   background-size:cover;
   background-repeat: no-repeat;
 }
-nav{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 1em;
-  gap: 1em;
-}
 
 #launch{
   display: flex;
@@ -57,5 +50,4 @@ button{
   border: 2px solid var(--green);
   border-radius: 2em;
   background-color: var(--green);
-
 }
