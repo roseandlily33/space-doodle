@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { LaunchContainer } from "./launch.styles";
+import {TableContainer} from './history.styles';
 const History = props => {
   console.log('History', props)
   const tableBody = useMemo(() => {
@@ -20,11 +21,10 @@ const History = props => {
       });
   }, [props.launches]);
 
-  return (<LaunchContainer >
-
-      <p>History of mission launches including SpaceX launches starting from the year 2006.</p>
-
-        <table style={{tableLayout: "fixed"}}>
+  return (
+  <LaunchContainer>
+      <h3>History of mission launches including SpaceX launches starting from the year 2006.</h3>
+        <TableContainer>
           <thead>
             <tr>
               <th style={{width: "2rem"}}></th>
@@ -38,7 +38,7 @@ const History = props => {
           <tbody>
             {tableBody}
           </tbody>
-        </table>
+        </TableContainer>
   </LaunchContainer>);
 }
   

@@ -15,7 +15,7 @@ const Launch = props => {
   return (
   <LaunchContainer> 
     <LaunchParagraph>
-    <p>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</p>
+    <h3>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</h3>
     <p>Only confirmed planets matching the following criteria are available for the earliest scheduled missions:</p>
     <ul>
       <li>Planetary radius &lt; 1.6 times Earth's radius</li>

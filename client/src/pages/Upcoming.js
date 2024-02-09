@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { LaunchContainer } from "./launch.styles";
+import {TableContainer } from './history.styles';
 
 const Upcoming = props => {
   const { 
@@ -14,7 +15,7 @@ const Upcoming = props => {
       .map((launch) => {
         return <tr key={String(launch.flightNumber)}>
           <td>
-              <p className={classes.link} onClick={() => abortLaunch(launch.flightNumber)}>
+              <p onClick={() => abortLaunch(launch.flightNumber)}>
                 ✖
               </p>
           </td>
@@ -25,14 +26,15 @@ const Upcoming = props => {
           <td>{launch.target}</td>
         </tr>;
       });
-  }, [launches, abortLaunch, classes.link]);
+  }, [launches, abortLaunch]);
+  //took out classname.link from here and the <p>
 
   return (
   <LaunchContainer>
-    <p>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</p>
-    <h2>Warning! Clicking on the ✖ aborts the mission.</h2>
+    <h3>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</h3>
+    <h2 style={{color:'#fcba03', marginTop: '0.6em'}}>Warning! Clicking on the ✖ aborts the mission.</h2>
  
-      <table style={{tableLayout: "fixed"}}>
+      <TableContainer>
         <thead>
           <tr>
             <th style={{width: "3rem"}}></th>
@@ -46,7 +48,7 @@ const Upcoming = props => {
         <tbody>
           {tableBody}
         </tbody>
-      </table>
+      </TableContainer>
 </LaunchContainer >)
 }
 
