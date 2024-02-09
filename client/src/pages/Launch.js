@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { LaunchContainer, LaunchParagraph, LaunchForm } from "./launch.styles";
 
 const Launch = props => {
   console.log('Launch', props);
@@ -11,16 +12,17 @@ const Launch = props => {
 
   const today = new Date().toISOString().split("T")[0];
 
-  return (<div id="launch">
-   
+  return (
+  <LaunchContainer> 
+    <LaunchParagraph>
     <p>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</p>
     <p>Only confirmed planets matching the following criteria are available for the earliest scheduled missions:</p>
     <ul>
       <li>Planetary radius &lt; 1.6 times Earth's radius</li>
       <li>Effective stellar flux &gt; 0.36 times Earth's value and &lt; 1.11 times Earth's value</li>
     </ul>
-
-    <form onSubmit={props.submitLaunch} id="planetForm">
+    </LaunchParagraph>
+    <LaunchForm onSubmit={props.submitLaunch}>
       <label htmlFor="launch-day">Launch Date</label>
       <input type="date" id="launch-day" name="launch-day" min={today} max="2040-12-31" defaultValue={today} />
       <label htmlFor="mission-name">Mission Name</label>
@@ -31,13 +33,13 @@ const Launch = props => {
       <select id="planets-selector" name="planets-selector">
         {selectorBody}
       </select>
-
         <button
           disabled={props.isPendingLaunch}>
           Launch Mission ✔
         </button>
-    </form>
-  </div>)
+
+    </LaunchForm>
+  </LaunchContainer>)
 };
 
 export default Launch;

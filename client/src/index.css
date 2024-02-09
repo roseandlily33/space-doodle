@@ -23,31 +23,21 @@ body{
   background-repeat: no-repeat;
 }
 
-#launch{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  border: 2px solid var(--yellow);
-  padding: 2em;
-  margin: 1em;
-  border-radius: 5em;
-  height: 80vh;
-  background-color: hsla(0, 0%, 0%, 0.5);
-
-}
-#planetForm{
-  display: flex;
-  flex-direction: column;
-  padding-top: 2em;
-  gap: 0.4em;
-}
 label{
   color: var(--blue);
 }
+input, select{
+  border: 2px solid var(--blue);
+  padding: 0.3em;
+  border-radius: 2px;
+}
 button{
   margin-top: 1em;
-  border: 2px solid var(--green);
+  border: none;
+  padding: 0.6em;
   border-radius: 2em;
   background-color: var(--green);
+}
+button:hover{
+  background-color: var(--yellow);
 }

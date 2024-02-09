@@ -19,7 +19,7 @@ export const RightNavBar = styled.div`
         font-size: 1.5em;
     }
     h2:hover{
-        color: ${({theme}) => theme.blue};
+        color: ${({theme}) => theme.yellow};
     }
 `;
 

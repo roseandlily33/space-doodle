@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-
+import { LaunchContainer } from "./launch.styles";
 
 const Upcoming = props => {
   const { 
@@ -27,7 +27,8 @@ const Upcoming = props => {
       });
   }, [launches, abortLaunch, classes.link]);
 
-  return <div id="upcoming" animate show={entered}>
+  return (
+  <LaunchContainer>
     <p>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</p>
     <h2>Warning! Clicking on the ✖ aborts the mission.</h2>
  
@@ -46,7 +47,7 @@ const Upcoming = props => {
           {tableBody}
         </tbody>
       </table>
-</div>
+</LaunchContainer >)
 }
 
 export default (Upcoming);
