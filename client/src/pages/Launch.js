@@ -2,15 +2,16 @@ import { useMemo } from "react";
 
 const Launch = props => {
   console.log('Launch', props);
+  const {planets} = props
   const selectorBody = useMemo(() => {
-    return props.planets?.map(planet => 
-      <option value={planet.keplerName} key={planet.keplerName}>{planet.keplerName}</option>
+    return planets?.map(planet => 
+      <option value={planet.kepler_name} key={planet.kepid}>{planet.kepler_name}</option>
     );
-  }, [props.planets]);
+  }, [planets]);
 
   const today = new Date().toISOString().split("T")[0];
 
-  return <div id="launch">
+  return (<div id="launch">
    
     <p>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</p>
     <p>Only confirmed planets matching the following criteria are available for the earliest scheduled missions:</p>
@@ -36,7 +37,7 @@ const Launch = props => {
           Launch Mission ✔
         </button>
     </form>
-  </div>
+  </div>)
 };
 
 export default Launch;
