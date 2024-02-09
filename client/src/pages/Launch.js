@@ -3,7 +3,7 @@ import { LaunchContainer, LaunchParagraph, LaunchForm } from "./launch.styles";
 
 const Launch = props => {
   console.log('Launch', props);
-  const {planets} = props
+  const {planets, submitLaunch} = props
   const selectorBody = useMemo(() => {
     return planets?.map(planet => 
       <option value={planet.kepler_name} key={planet.kepid}>{planet.kepler_name}</option>
@@ -22,7 +22,7 @@ const Launch = props => {
       <li>Effective stellar flux &gt; 0.36 times Earth's value and &lt; 1.11 times Earth's value</li>
     </ul>
     </LaunchParagraph>
-    <LaunchForm onSubmit={props.submitLaunch}>
+    <LaunchForm onSubmit={submitLaunch}>
       <label htmlFor="launch-day">Launch Date</label>
       <input type="date" id="launch-day" name="launch-day" min={today} max="2040-12-31" defaultValue={today} />
       <label htmlFor="mission-name">Mission Name</label>
@@ -37,7 +37,6 @@ const Launch = props => {
           disabled={props.isPendingLaunch}>
           Launch Mission ✔
         </button>
-
     </LaunchForm>
   </LaunchContainer>)
 };

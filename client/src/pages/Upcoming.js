@@ -4,9 +4,7 @@ import {TableContainer } from './history.styles';
 
 const Upcoming = props => {
   const { 
-    entered,
     launches,
-    classes,
     abortLaunch,
   } = props;
 

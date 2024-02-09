@@ -4,8 +4,7 @@ const API_URL = 'http://localhost:8000'
 async function httpGetPlanets() {
    const response =  await fetch(`${API_URL}/planets`);
    let finishedPlanets = await response.json();
-   console.log('Finished Planets', finishedPlanets)
-    return finishedPlanets;
+   return finishedPlanets;
 
 }
 
@@ -21,7 +20,7 @@ async function httpGetLaunches() {
 // Submit given launch data to launch system.
 async function httpSubmitLaunch(launch) {
   try {
-    return await fetch(`${API_URL}/launches`, {
+      return await fetch(`${API_URL}/launches`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

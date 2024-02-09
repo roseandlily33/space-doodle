@@ -6,23 +6,23 @@ import {
   httpAbortLaunch,
 } from './requests';
 
-function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
+function useLaunches() {
   const [launches, saveLaunches] = useState([]);
   const [isPendingLaunch, setPendingLaunch] = useState(false);
 
   const getLaunches = useCallback(async () => {
+    console.log('Main getting launches')
     const fetchedLaunches = await httpGetLaunches();
-    console.log('Gettting Launches', fetchedLaunches);
     saveLaunches(fetchedLaunches);
   }, []);
 
   useEffect(() => {
+    console.log('Use Effect getting launches')
     getLaunches();
   }, [getLaunches]);
 
   const submitLaunch = useCallback(async (e) => {
     e.preventDefault();
-    console.log('Submitting a launch')
     setPendingLaunch(true);
     const data = new FormData(e.target);
     const launchDate = new Date(data.get("launch-day"));
@@ -35,30 +35,26 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       rocket,
       target,
     });
-
-    const success = response.ok;
+   const success = response.ok;
     if (success) {
-      getLaunches();
-      setTimeout(() => {
-        setPendingLaunch(false);
-        onSuccessSound();
-      }, 800);
+      alert('Was Successful');
     } else {
-      onFailureSound();
+      alert('Wasnt Successful');
     }
-  }, [getLaunches, onSuccessSound, onFailureSound]);
+    setPendingLaunch(false);
+  }, []);
 
-  const abortLaunch = useCallback(async (id) => {
+  const abortLaunch = async (id) => {
+    console.log('Aborting Launch')
     const response = await httpAbortLaunch(id);
-
     const success = response.ok;
     if (success) {
       getLaunches();
-      onAbortSound();
+      alert('Aborted Launch')
     } else {
-      onFailureSound();
+      alert('Did not Aborted Launch')
     }
-  }, [getLaunches, onAbortSound, onFailureSound]);
+  };
 
   return {
     launches,
