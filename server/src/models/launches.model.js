@@ -3,17 +3,17 @@ const planets = require('./planets.model');
 
 const DEFAULT_FLIGHT_NUM = 100;
 
-//const launch = {
-//     flightNumber: 100, 
-//     mission: 'Kepler Exporation X',
-//     rocket: 'Explorer IS1',
-//     launchDate: new Date('December 27, 2030'),
-//     target: 'Kepler-442 b',
-//     customers: ['NASA', 'MIP'],
-//     upcoming: true,
-//     success: true
-// };
-//saveLaunch(launch);
+const launch = {
+    flightNumber: 100, 
+    mission: 'Kepler Exporation X',
+    rocket: 'Explorer IS1',
+    launchDate: new Date('December 27, 2030'),
+    target: 'Kepler-442 b',
+    customers: ['NASA', 'MIP'],
+    upcoming: true,
+    success: true
+};
+saveLaunch(launch);
 
 async function existsLaunchWithId(launchId){
     return await launchesDatabase.findOne(launchId)
@@ -52,9 +52,14 @@ async function scheduleNewLaunch(launch){
 }
 
 async function abortLaunchById(launchId){
-   return await launchesDatabase.findOne({
+   const abortedLaunch = await launchesDatabase.updateOne({
     flightNumber: launchId
-   })  
+   }, {
+    upcoming: false,
+    success: false
+   })
+   console.log('Aborted Launch', abortedLaunch);
+   return abortedLaunch.modifiedCount === 1;
 }
 
 module.exports = {
