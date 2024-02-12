@@ -27,10 +27,6 @@ async function httpAddNewLaunch(req, res){
 
 async function httpAbortLaunch(req, res){
     let launchId = Number(req.params.id);
-    const launch = await existsLaunchWithId(launchId);
-    if(!launch){
-        return res.status(404).json({err: 'Launch Doesnt Exist'})
-    };
     const abortingLaunch = await abortLaunchById(launchId);
     if(!abortingLaunch){
         return res.status(400).json({err: 'Launch was not aborted'})
