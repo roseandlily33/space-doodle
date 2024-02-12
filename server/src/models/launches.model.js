@@ -35,19 +35,20 @@ async function getAllLaunches(){
 }
 
 async function saveLaunch(launch){
-    // const planet = await planets.findOne({
-    //     keplerName: launch.target
-    // })
-    // if(!planet){
-    //     throw new Error ('No matching planet was foound')
-
-    // }
-    // await launchesDatabase.updateOneAndUpdate({
-    //     flightNumber: launch.flightNumber
-    // }, launch, {upsert: true})
+    console.log('SAVING A LAUNCH', launch)
+    await launchesDatabase.findOneAndUpdate({
+        flightNumber: launch.flightNumber
+    }, launch, {upsert: true})
 }
 
 async function scheduleNewLaunch(launch){
+    console.log('SCHEDULING NEW LAUNCH');
+    const planet = await launchesDatabase.findOne({
+        keplerName: launch.target
+    })
+    if(!planet){
+        throw new Error ('No matching planet was foound')
+    }
     const newNumber = await getLatestFlightNumber() + 1;
     const newLaunch = Object.assign(launch, {
         success: true,
@@ -56,20 +57,11 @@ async function scheduleNewLaunch(launch){
         flightNumber: newNumber
     });
     await saveLaunch(newLaunch);
-    // launches.set(launch.flightNumber, Object.assign(launch, {
-    //     flightNumber: latestFlightNumber,
-    //     customers:
-    //     upcoming: true,
-    //     success: true
-    // }));
-    // console.log('AlL THE LAUNCHES IN ADD', launches);
-
 }
 async function abortLaunchById(launchId){
    return await launchesDatabase.findOne({
     flightNumber: launchId
-   })
-   
+   })  
 }
 
 module.exports = {

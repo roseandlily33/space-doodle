@@ -5,10 +5,12 @@ const {
 
 
 async function httpGetAllLaunches(req, res){
+    console.log('HTTP GET ALL LAUNCHES')
    return res.status(200).json(await getAllLaunches());
 }
 
 async function httpAddNewLaunch(req, res){
+    console.log('HTTP ADD NEW LAUNCH')
     const launch = req.body;
     if(!launch.mission || !launch.rocket || !launch.launchDate
         || !launch.target){
@@ -23,6 +25,7 @@ async function httpAddNewLaunch(req, res){
 }
 
 function httpAbortLaunch(req, res){
+    console.log('HTTP ABORTING LAUNCH')
     let launchId = Number(req.params.id);
    if(!existsLaunchWithId(launchId)){
     return res.status(404).json({err: 'Launch not found'});
