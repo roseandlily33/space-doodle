@@ -1,12 +1,13 @@
 import { useMemo } from "react";
 import { LaunchContainer } from "./launch.styles";
-import {TableContainer } from './history.styles';
+import { TableContainer } from './history.styles';
 
 const Upcoming = props => {
   const { 
     launches,
     abortLaunch,
   } = props;
+  console.log('UPCOMING PAGE', launches);
 
   const tableBody = useMemo(() => {
     return launches?.filter((launch) => launch.upcoming)
