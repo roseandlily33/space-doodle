@@ -2,24 +2,25 @@ import { useMemo } from "react";
 import { LaunchContainer } from "./launch.styles";
 import {TableContainer} from './history.styles';
 const History = props => {
-  console.log('History', props)
+
+  const {launches} = props;
   const tableBody = useMemo(() => {
-    return props.launches?.filter((launch) => !launch.upcoming)
+    return launches?.filter((launch) => !launch.upcoming)
       .map((launch) => {
         return <tr key={String(launch.flightNumber)}>
-          <td>
+          <td style={{paddingBlock: "2rem"}}>
             <span style={
-              {color: launch.success ? "greenyellow" : "red"}
+              {color: launch.success ? "green" : "red"}
             }>█</span>
           </td>
           <td>{launch.flightNumber}</td>
           <td>{new Date(launch.launchDate).toDateString()}</td>
-          <td>{launch.mission}</td>
+          <td >{launch.mission}</td>
           <td>{launch.rocket}</td>
           <td>{launch.customers?.join(", ")}</td>
         </tr>;
       });
-  }, [props.launches]);
+  }, [launches]);
 
   return (
   <LaunchContainer>

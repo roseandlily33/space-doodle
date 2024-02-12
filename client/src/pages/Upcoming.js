@@ -13,7 +13,7 @@ const Upcoming = props => {
     return launches?.filter((launch) => launch.upcoming)
       .map((launch) => {
         return <tr key={String(launch.flightNumber)}>
-          <td>
+          <td style={{paddingBlock: "2rem"}}>
               <p onClick={() => abortLaunch(launch.flightNumber)}>
                 ✖
               </p>
