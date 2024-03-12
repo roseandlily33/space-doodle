@@ -11,13 +11,11 @@ function useLaunches() {
   const [isPendingLaunch, setPendingLaunch] = useState(false);
 
   const getLaunches = useCallback(async () => {
-    console.log('Main getting launches')
     const fetchedLaunches = await httpGetLaunches();
     saveLaunches(fetchedLaunches);
   }, []);
 
   useEffect(() => {
-    console.log('Use Effect getting launches')
     getLaunches();
   }, [getLaunches]);
 

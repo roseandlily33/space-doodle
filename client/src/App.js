@@ -9,12 +9,11 @@ import {ThemeProvider} from 'styled-components';
 
 function App() {
   const planets = usePlanets();
-  console.log('Use Planets App', planets);
   const {launches,
     isPendingLaunch,
     submitLaunch,
     abortLaunch } = useLaunches();
-  console.log('Use Launches App', launches);
+    
   const theme = {
     yellow: '#fcba03',
     blue: '#03e8fc',

@@ -1,0 +1,22 @@
+name: NASA Project CI
+on: 
+  push:
+    branches: [ master ]
+  pull_request: 
+    branches: [ master ]
+jobs: 
+  build: 
+  # Could be macos-latest windows-latest
+    runs-on: ubuntu-latest
+    steps: 
+    # Premade actions from github actions
+      - uses: actions/checkout@v3
+      - name: Use Node.js version 20
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: '20'
+      - run: npm install
+      - run: npm run build --prefix client
+      # Needs means that it will run after build step if not they will run at the same time
+  deploy:
+   needs: build
