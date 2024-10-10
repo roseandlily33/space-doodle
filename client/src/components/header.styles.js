@@ -13,18 +13,18 @@ export const RightNavBar = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 1em;
-    h2{
+    h2 {
         color: ${({theme}) => theme.green};
         text-decoration: none;
         font-size: 1.5em;
     }
-    h2:hover{
+    h2:hover {
         color: ${({theme}) => theme.yellow};
     }
 `;
 
 export const LeftNavBar = styled.div`
    display: flex;
-    flex-direction: row;
-    align-items: center;
+   flex-direction: row;
+   align-items: center;
 `;

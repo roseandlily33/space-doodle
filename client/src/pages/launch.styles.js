@@ -24,17 +24,15 @@ export const LaunchParagraph = styled.div`
   gap: 0.5em;
   padding-left: 2em;
   text-align: center;
-  li{
-    list-style-type: none;
-    color: var(--yellow);
-
-  }
+    li{
+      list-style-type: none;
+      color: var(--yellow);
+    }
 `;
 
 export const LaunchForm = styled.form`
   display: flex;
   flex-direction: column;
-  
   width: 50%;
   padding-top: 2em;
   gap: 0.4em;

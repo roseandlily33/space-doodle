@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { LaunchContainer } from "./launch.styles";
 import {TableContainer} from './history.styles';
-const History = props => {
 
+const History = props => {
   const {launches} = props;
   const tableBody = useMemo(() => {
     return launches?.filter((launch) => !launch.upcoming)

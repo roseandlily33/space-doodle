@@ -25,13 +25,11 @@ const Upcoming = props => {
         </tr>;
       });
   }, [launches, abortLaunch]);
-  //took out classname.link from here and the <p>
 
-  return (
+return (
   <LaunchContainer>
     <h2>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</h2>
     <h3 style={{color:'#fcba03', marginTop: '0.6em'}}>Warning! Clicking on the ✖ aborts the mission.</h3>
- 
       <TableContainer>
         <thead>
           <tr>
@@ -43,9 +41,9 @@ const Upcoming = props => {
             <th>Destination</th>
           </tr>
         </thead>
-        <tbody>
+         <tbody>
           {tableBody}
-        </tbody>
+         </tbody>
       </TableContainer>
 </LaunchContainer >)
 }
