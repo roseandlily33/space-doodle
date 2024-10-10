@@ -5,7 +5,7 @@ const {
     existsLaunchWithId,
     abortLaunchById
 } = require('../../models/launches.model')
-const {getPagination} = require('../../services/query');
+const {getPagination} = require('../../data/services/query');
 
 
 async function httpGetAllLaunches(req, res){

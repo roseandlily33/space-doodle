@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { LaunchContainer, LaunchParagraph, LaunchForm } from "./launch.styles";
 
 const Launch = props => {
-  console.log('Launch', props);
   const {planets, submitLaunch} = props
   const selectorBody = useMemo(() => {
     return planets?.map(planet => 

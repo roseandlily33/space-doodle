@@ -7,7 +7,6 @@ const Upcoming = props => {
     launches,
     abortLaunch,
   } = props;
-  console.log('UPCOMING PAGE', launches);
 
   const tableBody = useMemo(() => {
     return launches?.filter((launch) => launch.upcoming)
