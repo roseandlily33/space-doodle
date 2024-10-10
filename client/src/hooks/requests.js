@@ -1,5 +1,5 @@
 //const API_URL = 'v1';
-const API_URL = 'http://localhost:8000/v1'
+const API_URL = process.env.REACT_APP_BACKEND_ROUTE;
 
 async function httpGetPlanets() {
    const response =  await fetch(`${API_URL}/planets`);

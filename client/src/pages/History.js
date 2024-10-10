@@ -24,7 +24,7 @@ const History = props => {
 
   return (
   <LaunchContainer>
-      <h3>History of mission launches including SpaceX launches starting from the year 2006.</h3>
+      <h2>History of mission launches including SpaceX launches starting from the year 2006.</h2>
         <TableContainer>
           <thead>
             <tr>

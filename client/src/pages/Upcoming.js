@@ -29,8 +29,8 @@ const Upcoming = props => {
 
   return (
   <LaunchContainer>
-    <h3>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</h3>
-    <h2 style={{color:'#fcba03', marginTop: '0.6em'}}>Warning! Clicking on the ✖ aborts the mission.</h2>
+    <h2>Upcoming missions including both SpaceX launches and newly scheduled Zero to Mastery rockets.</h2>
+    <h3 style={{color:'#fcba03', marginTop: '0.6em'}}>Warning! Clicking on the ✖ aborts the mission.</h3>
  
       <TableContainer>
         <thead>

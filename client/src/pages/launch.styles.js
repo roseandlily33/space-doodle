@@ -10,7 +10,12 @@ export const LaunchContainer = styled.div`
   margin: 1em 2em;
   border-radius: 1em;
   height: 100vh;
-  background-color: hsla(0, 0%, 0%, 0.6);
+  background-color: hsla(0, 0%, 0%, 0.8);
+  overflow-y: scroll;
+  h3{
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const LaunchParagraph = styled.div`
@@ -18,6 +23,12 @@ export const LaunchParagraph = styled.div`
   flex-direction: column;
   gap: 0.5em;
   padding-left: 2em;
+  text-align: center;
+  li{
+    list-style-type: none;
+    color: var(--yellow);
+
+  }
 `;
 
 export const LaunchForm = styled.form`

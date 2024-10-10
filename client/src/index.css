@@ -9,12 +9,48 @@
   --yellow: #fcba03;
   --blue: #03e8fc;
   --green: #03fc07;
+  --purple: #ad38b8;
+  --white: #efefef;
   --headerFont: 'Zen Dots', sans-serif;
   --mainFont: 'Space Mono', monospace;
 }
 h1{
+  font-size: 3.815rem;
   font-family: var(--headerFont);
-  color: white;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  color: var(--blue);
+}
+h2{
+  font-size: 3.052rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--purple);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h3{
+  font-size: 2.441rem;
+  font-family: var(--headerFont);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+h4{
+  font-size: 1.953rem;  
+  font-family: var(--headerFont);
+  font-weight: 300;
+}
+h5,  label{
+  font-size: 1.563rem;
+}
+h6, li, p{
+  font-size: 1.25rem;
+}
+a{
+  text-decoration: none;
+  font-size: 1rem;
+  color: var(--white);
+  font-family: var(--headerFont);
 }
 body{
   background-color: black;
