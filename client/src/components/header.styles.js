@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const NavBarContainer = styled.nav`
   display: flex;
   flex-direction: row;
-justify-content: space-between;
+  justify-content: space-between;
   padding: 1em;
   gap: 1em;
 `;

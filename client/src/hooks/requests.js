@@ -5,7 +5,6 @@ async function httpGetPlanets() {
    const response =  await fetch(`${API_URL}/planets`);
    let finishedPlanets = await response.json();
    return finishedPlanets;
-
 }
 
 // Load launches, sort by flight number, and return as JSON.
