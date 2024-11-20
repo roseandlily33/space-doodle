@@ -1,22 +1,22 @@
-const mongoose = require('mongoose');
+const {mongoose, Schema} = require('mongoose');
 
 const launchesSchema = new mongoose.Schema({
     flightNumber: {
         type: Number,
-        required: true,
+        //required: true,
         default: 100
     },
     launchDate:{
         type: Date,
-        required: true
+        //required: true
     },
     mission: {
         type: String,
-        required: true
+        //required: true
     },
     rocket: {
         type: String,
-        required: true
+       // required: true
     },
     target: {
         type: String,
@@ -24,11 +24,11 @@ const launchesSchema = new mongoose.Schema({
     customers: [String],
     upcoming: {
         type: Boolean,
-        required: true
+       // required: true
     },
     success: {
         type: Boolean,
-        required: true,
+        //required: true,
         default: true
     }
 });

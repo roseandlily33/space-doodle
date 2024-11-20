@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { LaunchContainer, LaunchParagraph, LaunchForm } from "./launch.styles";
 
-const Launch = props => {
-  const {planets, submitLaunch} = props
+const Launch = ({planets, submitLaunch, isPendingLaunch}) => {
+
   const selectorBody = useMemo(() => {
     return planets?.map(planet => 
       <option value={planet.keplerName} key={planet.keplerName}>{planet.keplerName}</option>
@@ -33,7 +33,7 @@ const Launch = props => {
         {selectorBody}
       </select>
         <button
-          disabled={props.isPendingLaunch}>
+          disabled={isPendingLaunch}>
           Launch Mission ✔
         </button>
     </LaunchForm>

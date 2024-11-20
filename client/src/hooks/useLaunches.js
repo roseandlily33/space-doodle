@@ -4,20 +4,31 @@ import {
   httpGetLaunches,
   httpSubmitLaunch,
   httpAbortLaunch,
+  httpUpcomingLaunches,
 } from './requests';
 
 function useLaunches() {
   const [launches, saveLaunches] = useState([]);
   const [isPendingLaunch, setPendingLaunch] = useState(false);
+  const [upcoming, setUpcoming] = useState([]);
 
   const getLaunches = useCallback(async () => {
     const fetchedLaunches = await httpGetLaunches();
     saveLaunches(fetchedLaunches);
   }, []);
 
+  const getUpcoming = useCallback(async() => { 
+    const upcomingLaunches = await httpUpcomingLaunches();
+    setUpcoming(upcomingLaunches);
+  }, []); 
+
   useEffect(() => {
     getLaunches();
   }, [getLaunches]);
+
+  useEffect(() => {
+    getUpcoming();
+  }, [getUpcoming]);
 
   const submitLaunch = useCallback(async (e) => {
     e.preventDefault();
@@ -43,7 +54,6 @@ function useLaunches() {
   }, []);
 
   const abortLaunch = async (id) => {
-    console.log('Aborting Launch')
     const response = await httpAbortLaunch(id);
     const success = response.ok;
     if (success) {
@@ -59,6 +69,7 @@ function useLaunches() {
     isPendingLaunch,
     submitLaunch,
     abortLaunch,
+    upcoming,
   };
 }
 

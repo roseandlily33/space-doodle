@@ -1,10 +1,16 @@
-//const API_URL = 'v1';
 const API_URL = process.env.REACT_APP_BACKEND_ROUTE;
 
+// Gets all the planets
 async function httpGetPlanets() {
    const response =  await fetch(`${API_URL}/planets`);
    let finishedPlanets = await response.json();
    return finishedPlanets;
+}
+// Gets the upcoming launches
+async function httpUpcomingLaunches(){
+  const response = await fetch(`${API_URL}/launches/upcoming`);
+  let upcomingLaunches = await response.json();
+  return upcomingLaunches;  
 }
 
 // Load launches, sort by flight number, and return as JSON.
@@ -52,4 +58,5 @@ export {
   httpGetLaunches,
   httpSubmitLaunch,
   httpAbortLaunch,
+  httpUpcomingLaunches
 };

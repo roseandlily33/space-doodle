@@ -1,4 +1,4 @@
-const launchesDatabase = require('./launches.mongo');
+const Launch = require('./launches.mongo');
 //const planets = require('./planets.model');
 const axios = require('axios');
 
@@ -17,7 +17,6 @@ const launch = {
 saveLaunch(launch);
 
 async function populateLaunches(){
-    console.log('Loading launch data');
     let response = await axios.post(URL,{
         query: {},
         options: {
@@ -76,14 +75,14 @@ async function loadLaunchData(){
 
 }
 async function findLaunch(filter){
-    return await launchesDatabase.findOne(filter)
+    return await Launch.findOne(filter)
 }
 
 async function existsLaunchWithId(launchId){
     return await findLaunch({flightNumber: launchId})
   }
 async function getLatestFlightNumber(){
-    const latestLaunch = await launchesDatabase.findOne()
+    const latestLaunch = await  Launch.findOne()
     .sort('-flightNumber');
     if(!latestLaunch){
         return DEFAULT_FLIGHT_NUM;
@@ -92,16 +91,28 @@ async function getLatestFlightNumber(){
 }
 
 async function getAllLaunches(skip, limit){
-    return await launchesDatabase.find({}, {
+    return await Launch.find({}, {
         '_id': 0, '__v': 0
     }).sort({flightNumber : 1}).skip(skip).limit(limit);
 }
 
+async function getUpcomingLaunches(){
+    return await Launch.find({
+        upcoming: true
+    }, {
+        '_id': 0, '__v': 0
+    }).sort({flightNumber : 1});
+}
+
 async function saveLaunch(launch){
-    let saved = await launchesDatabase.findOneAndUpdate({
+   try{
+    let saved = await Launch.findOneAndUpdate({
         flightNumber: launch.flightNumber
-    }, launch, {upsert: true});
+    }, launch, {upsert: true, new: true});
     return saved;
+   } catch(err){
+    throw new Error('Launch data was not saved');
+   }
 }
 
 async function scheduleNewLaunch(launch){
@@ -116,7 +127,7 @@ async function scheduleNewLaunch(launch){
 }
 
 async function abortLaunchById(launchId){
-   const abortedLaunch = await launchesDatabase.updateOne({
+   const abortedLaunch = await Launch.updateOne({
     flightNumber: launchId
    }, {
     upcoming: false,
@@ -133,5 +144,6 @@ module.exports = {
     abortLaunchById,
     getLatestFlightNumber,
     saveLaunch,
-    loadLaunchData
+    loadLaunchData,
+    getUpcomingLaunches
 }

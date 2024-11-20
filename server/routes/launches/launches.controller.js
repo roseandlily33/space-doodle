@@ -3,22 +3,27 @@ const {
     saveLaunch,
     scheduleNewLaunch, 
     existsLaunchWithId,
+    getUpcomingLaunches,
     abortLaunchById
 } = require('../../models/launches.model')
 const {getPagination} = require('../../data/services/query');
 
 
 async function httpGetAllLaunches(req, res){
-    console.log(req.query);
     const {skip,  limit} = getPagination(req.query);
     const launches = await getAllLaunches(skip, limit)
     return res.status(200).json(launches);
 }
 
+async function httpGetUpcomingLaunches(req, res){
+    const launches = await getUpcomingLaunches();
+    return res.status(200).json(launches);
+}
+
 async function httpAddNewLaunch(req, res){
+    console.log('Adding a new launch')
     const launch = req.body;
-    if(!launch.mission || !launch.rocket || !launch.launchDate
-        || !launch.target){
+    if(!launch.mission || !launch.rocket || !launch.launchDate || !launch.target){
             return res.status(400).json({err: 'Missing a property'});
     }
     launch.launchDate = new Date(launch.launchDate);
@@ -41,5 +46,6 @@ async function httpAbortLaunch(req, res){
 module.exports = {
     httpGetAllLaunches,
     httpAddNewLaunch,
-    httpAbortLaunch
+    httpAbortLaunch,
+    httpGetUpcomingLaunches
 }

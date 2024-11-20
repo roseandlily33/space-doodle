@@ -10,6 +10,7 @@ import {ThemeProvider} from 'styled-components';
 function App() {
   const planets = usePlanets();
   const {launches,
+    upcoming,
     isPendingLaunch,
     submitLaunch,
     abortLaunch } = useLaunches();
@@ -26,9 +27,9 @@ function App() {
       <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Launch planets={planets}  submitLaunch={ submitLaunch} isPendingLaunch={isPendingLaunch} />}/>
+        <Route path='/' element={<Launch planets={planets} submitLaunch={ submitLaunch} isPendingLaunch={isPendingLaunch} />}/>
         <Route path='history' element={<History  launches={launches}/>} />
-        <Route path='upcoming' element={<Upcoming launches={launches} abortLaunch={abortLaunch} />} />
+        <Route path='upcoming' element={<Upcoming launches={upcoming} abortLaunch={abortLaunch} />} />
       </Routes>
       </BrowserRouter>
       </ThemeProvider>
