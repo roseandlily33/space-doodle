@@ -3,7 +3,6 @@ import { LaunchContainer } from "./launch.styles";
 import { TableContainer } from './history.styles';
 
 const Upcoming = ({ launches, abortLaunch }) => {
-  console.log('Upcoming launches:', launches);
   
   const tableBody = useMemo(() => {
     return launches

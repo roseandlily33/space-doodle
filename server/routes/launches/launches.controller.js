@@ -21,7 +21,6 @@ async function httpGetUpcomingLaunches(req, res){
 }
 
 async function httpAddNewLaunch(req, res){
-    console.log('Adding a new launch')
     const launch = req.body;
     if(!launch.mission || !launch.rocket || !launch.launchDate || !launch.target){
             return res.status(400).json({err: 'Missing a property'});
